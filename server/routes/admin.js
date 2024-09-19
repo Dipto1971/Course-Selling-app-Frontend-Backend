@@ -37,12 +37,16 @@ router.post('/signup', (req, res) => {
   });
   
   router.post('/login', async (req, res) => {
-    const { username, password } = req.headers;
+    const { username, password } = req.body;
     const admin = await Admin.findOne({ username, password });
     if (admin) {
       const token = jwt.sign({ username, role: 'admin' }, SECRET, { expiresIn: '1h' });
       res.json({ message: 'Logged in successfully', token });
     } else {
+      if (!admin) {
+        res.status(403).json({ message: 'Admin doesnt exist' });
+        return
+      }
       res.status(403).json({ message: 'Invalid username or password' });
     }
   });
