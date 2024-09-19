@@ -15,6 +15,12 @@ app.get("/", (req, res) => res.json({msg: "hello world after the class"}));
 
 // Connect to MongoDB
 // DONT MISUSE THIS THANKYOU!!
-mongoose.connect('mongodb://localhost:27017/courses', { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+mongoose.connect('mongodb+srv://diptohaq771:diptohaq771@cluster0.vhaoodf.mongodb.net/courses', { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+
+if (mongoose.connection) {
+    console.log('Connected to MongoDB');
+} else {
+    console.log('Error connecting to MongoDB');
+}
 
 app.listen(3000, () => console.log('Server running on port 3000'));
