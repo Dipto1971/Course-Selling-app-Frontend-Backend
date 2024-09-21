@@ -16,6 +16,7 @@ router.get("/me", authenticateJwt, async (req, res) => {
     res.json({
         username: admin.username
     })
+    console.log(admin)
 });
 
 router.post('/signup', (req, res) => {
