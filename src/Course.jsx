@@ -5,7 +5,7 @@ import { Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 
 function Course() {
-    let { courseId } = useParams();
+    let { courseId } = useParams(); // useParams is a hook that returns an object of key/value pairs of URL parameters. Use it to access match.params of the current <Route>.
     const [course, setCourse] = useState(null);
     
     useEffect(() => {
@@ -152,7 +152,7 @@ function CourseCard(props) {
                 Price
             </Typography>
             <Typography variant="subtitle1">
-                <b>Rs {course.price} </b>
+                <b>Tk {course.price} </b>
             </Typography>
         </div>
     </Card>
